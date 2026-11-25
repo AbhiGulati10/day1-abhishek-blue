@@ -1,0 +1,40 @@
+[*] Parsed 4570 requests
+
+== Top 5 IPs by 404 count ==
+198.51.100.77    404s=205   total_reqs=250   unique_404_paths=205   404_ratio=82%
+192.0.2.50       404s=11    total_reqs=120   unique_404_paths=11    404_ratio=9%
+192.0.2.5        404s=6     total_reqs=75    unique_404_paths=3     404_ratio=8%
+192.0.2.9        404s=5     total_reqs=83    unique_404_paths=2     404_ratio=6%
+203.0.113.32     404s=4     total_reqs=88    unique_404_paths=3     404_ratio=5%
+
+== Detection: >=50 404s within 300s ==
+Suspects: ['198.51.100.77']
+
+=== Profile of 198.51.100.77 ===
+First seen : 2026-11-24 14:32:05+00:00   Last seen: 2026-11-24 14:36:57+00:00
+Requests   : 250 total, 205 x 404, 205 unique 404 paths
+Enumeration burst: 14:32:05 -> 14:32:21  (216 reqs in 16s = 13.5 req/s)
+
+User-Agents used:
+    216  gobuster/3.6
+     34  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+
+Status codes: {404: 205, 403: 3, 200: 9, 301: 3, 401: 29, 302: 1}
+
+Sample of 404 paths: /demo, /test.old, /sql, /production, /server-info, /bak, /portal, /backup.txt, /wp-admin, /members
+
+Non-404 hits during enumeration (successful discoveries):
+  14:32:05  403       153 B  /backup
+  14:32:09  200        23 B  /.git/HEAD
+  14:32:10  403       153 B  /server-status
+  14:32:10  200      2210 B  /login
+  14:32:10  301       169 B  /uploads
+  14:32:12  200   2483921 B  /backup.sql
+  14:32:12  301       169 B  /admin
+  14:32:13  200      1874 B  /config.php.bak
+  14:32:14  200       112 B  /robots.txt
+  14:32:18  403       153 B  /.env
+  14:32:20  301       169 B  /api
+
+Follow-up: 30 POST /admin/login  -> statuses {401: 29, 302: 1}
+  Last POST status 302 at 14:36:57  (possible successful login!)
